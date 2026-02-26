@@ -1,0 +1,110 @@
+{ config, lib, pkgs, inputs, ... }:
+
+{
+	imports =
+		[
+			./hardware-configuration.nix
+			./disko.nix
+			inputs.disko.nixosModules.disko
+		];
+
+	boot.loader.systemd-boot.enable = true;
+	boot.loader.efi.canTouchEfiVariables = true;
+
+	boot.kernelPackages = pkgs.linuxPackages_latest;
+	networking.hostName = "nixos";
+
+	networking.networkmanager.enable = true;
+
+	time.timeZone = "Asia/Kolkata";
+
+	i18n.defaultLocale = "en_US.UTF-8";
+
+	services.libinput.enable = true;
+
+	users.users.meghith = {
+		isNormalUser = true;
+		description = "Meghith";
+		extraGroups = [ "wheel" "networkmanager" "audio" "video" "input" "bluetooth" ];
+		shell = pkgs.bash;
+	};
+	security.sudo.wheelNeedsPassword = true;
+
+	programs.niri.enable = true;
+
+	services.greetd = {
+		enable = true;
+		settings = {
+			default_session = {
+				command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd niri";
+				user = "greeter";
+			};
+		};
+	};
+
+	security.rtkit.enable = true;
+
+	services.pipewire = {
+		enable = true;
+		alsa.enable = true;
+		alsa.support32Bit = true;
+		pulse.enable = true;
+		jack.enable = true;
+	};
+
+	hardware.bluetooth.enable = true;
+	hardware.bluetooth.powerOnBoot = true;
+	services.blueman.enable = true;
+
+	programs.firefox.enable = true;
+
+	environment.sessionVariables = {
+		TERMINAL = "kitty";
+	};
+
+	environment.systemPackages = with pkgs; [
+		vim
+		wget
+		curl
+		git
+		kitty
+		kdePackages.dolphin
+		kdePackages.qtsvg
+		kdePackages.kio-extras
+		kdePackages.kio-fuse
+	];
+
+	services.dbus.enable = true;
+	services.udisks2.enable = true;
+	hardware.enableRedistributableFirmware = true;
+
+	nix.settings.experimental-features = ["nix-command" "flakes"];
+
+	networking.firewall.enable = true;
+
+	home-manager = {
+		useGlobalPkgs = true;
+		useUserPackages = true;
+
+		users.meghith = {
+			imports = [
+				inputs.niri.homeModules.niri
+				inputs.dms.homeModules.dank-material-shell
+			];
+
+			programs.dank-material-shell = {
+				enable = true;
+				enableSystemMonitoring = true;
+				dgop.package = inputs.dgop.packages.${pkgs.system}.default;
+				niri = {
+					enableKeybinds = true;
+					enableSpawn = true;
+				};
+			};
+
+			home.stateVersion = "25.11";
+		};
+	};
+
+	system.stateVersion = "25.11";
+}
