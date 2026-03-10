@@ -160,6 +160,7 @@
 		yazi
 		tmux
 		ffmpeg
+		unrar
 	];
 
 	services.udev.packages = with pkgs; [
