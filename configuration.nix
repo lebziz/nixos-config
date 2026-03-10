@@ -24,6 +24,8 @@
 	boot.loader.efi.canTouchEfiVariables = true;
 
 	boot.kernelPackages = pkgs.linuxPackages_latest;
+	boot.supportedFilesystems = [ "fuse" ];
+	boot.kernelModules = [ "fuse" ];
 	networking.hostName = "nixos";
 
 	networking.networkmanager.enable = true;
@@ -45,7 +47,7 @@
 	users.users.meghith = {
 		isNormalUser = true;
 		description = "Meghith";
-		extraGroups = [ "wheel" "networkmanager" "audio" "video" "input" "bluetooth" ];
+		extraGroups = [ "wheel" "networkmanager" "audio" "video" "input" "bluetooth" "plugdev" ];
 		shell = pkgs.fish;
 	};
 	security.sudo.wheelNeedsPassword = true;
@@ -97,6 +99,8 @@
 	];
 
 	programs.gamemode.enable = true;
+	programs.nix-ld.enable = true;
+	hardware.rtl-sdr.enable = true;
 
 	environment.systemPackages = with pkgs; [
 		vim
@@ -141,12 +145,26 @@
 		libmtp
 		jmtpfs
 		steam-run
+		xwayland-satellite
+		fuse2
+		libreoffice-fresh
+		hunspell
+		hunspellDicts.en_US
+		rtl-sdr
 	];
 
 	services.udev.packages = with pkgs; [
 		libmtp
 	];
 	programs.xwayland.enable = true;
+	systemd.user.services.xwayland-satellite={
+		description = "Xwayland Satellite";
+		wantedBy = [ "graphical-session.target" ];
+		serviceConfig = {
+			ExecStart = "${pkgs.xwayland-satellite}/bin/xwayland-satellite";
+			Restart = "always";
+		};
+	};
 
 	services.dbus.enable = true;
 	services.dbus.packages = [ pkgs.kdePackages.kded ];
