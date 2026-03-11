@@ -103,6 +103,9 @@
 	hardware.rtl-sdr.enable = true;
 	xdg.mime.defaultApplications = {
 		"image/png" = "nomacs.desktop";
+		"application/pdf" = "org.kde.okular.desktop";
+		"application/postscript" = "org.kde.okular.desktop";
+		"image/tiff" = "org.kde.okular.desktop";
 	};
 
 	environment.systemPackages = with pkgs; [
@@ -143,6 +146,10 @@
 		(python3.withPackages (ps: with ps; [
 			pip
 			virtualenv
+			numpy
+			matplotlib
+			scipy
+			astropy
 		]))
 		usbutils
 		libmtp
