@@ -22,6 +22,7 @@
 
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
+	boot.loader.timeout = null;
 
 	boot.kernelPackages = pkgs.linuxPackages_latest;
 	boot.supportedFilesystems = [ "fuse" ];
@@ -168,6 +169,13 @@
 		tmux
 		ffmpeg
 		unrar
+		xdg-utils
+		file
+		pulseaudio
+		audacity
+		texlive.combined.scheme-full
+		basedpyright
+		nodejs
 	];
 
 	services.udev.packages = with pkgs; [
