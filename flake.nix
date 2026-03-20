@@ -26,6 +26,10 @@
 			url = "github:AvengeMedia/dgop";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+		silentSDDM = {
+			url = "github:uiriansan/SilentSDDM";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
 	outputs = { self, nixpkgs, disko, home-manager, ... }@inputs:

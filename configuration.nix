@@ -6,6 +6,7 @@
 			./hardware-configuration.nix
 			./disko.nix
 			inputs.disko.nixosModules.disko
+			inputs.silentSDDM.nixosModules.default
 		];
 
 	fileSystems."/mnt/driveD" = {
@@ -61,13 +62,17 @@
 	};	
 
 	services.greetd = {
-		enable = true;
+		enable = false;
 		settings = {
 			default_session = {
 				command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd 'dbus-run-session niri'";
 				user = "greeter";
 			};
 		};
+	};
+
+	services.displayManager.sddm = {
+		enable = true;
 	};
 
 	security.rtkit.enable = true;
@@ -86,6 +91,10 @@
 
 	programs.firefox.enable = true;
 	programs.fish.enable = true;
+	programs.silentSDDM = {
+		enable = true;
+		theme = "rei";
+	};
 
 	environment.sessionVariables = {
 		TERMINAL = "kitty";
