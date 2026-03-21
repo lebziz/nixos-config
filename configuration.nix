@@ -87,7 +87,6 @@
 
 	hardware.bluetooth.enable = true;
 	hardware.bluetooth.powerOnBoot = true;
-	services.blueman.enable = true;
 
 	programs.firefox.enable = true;
 	programs.fish.enable = true;
@@ -172,6 +171,7 @@
 		hunspellDicts.en_US
 		rtl-sdr
 		cargo
+		gnumake
 		rustc
 		gcc
 		yazi
@@ -185,6 +185,7 @@
 		texlive.combined.scheme-full
 		basedpyright
 		nodejs
+		spotify
 	];
 
 	services.udev.packages = with pkgs; [
