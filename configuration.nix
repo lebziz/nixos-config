@@ -62,7 +62,7 @@
 	};	
 
 	services.greetd = {
-		enable = false;
+		enable = true;
 		settings = {
 			default_session = {
 				command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd 'dbus-run-session niri'";
@@ -72,8 +72,9 @@
 	};
 
 	services.displayManager.sddm = {
-		enable = true;
+		enable = false;
 	};
+	# services.displayManager.defaultSession = "niri";
 
 	security.rtkit.enable = true;
 
@@ -91,7 +92,7 @@
 	programs.firefox.enable = true;
 	programs.fish.enable = true;
 	programs.silentSDDM = {
-		enable = true;
+		enable = false;
 		theme = "rei";
 	};
 
@@ -108,6 +109,7 @@
 	];
 
 	programs.gamemode.enable = true;
+	programs.steam.enable = true;
 	programs.nix-ld.enable = true;
 	hardware.rtl-sdr.enable = true;
 	xdg.mime.defaultApplications = {
@@ -116,6 +118,9 @@
 		"application/postscript" = "org.kde.okular.desktop";
 		"image/tiff" = "org.kde.okular.desktop";
 	};
+
+	services.xserver.enable = true;
+	services.xserver.windowManager.i3.enable = true;
 
 	environment.systemPackages = with pkgs; [
 		vim
@@ -133,6 +138,7 @@
 		cmus
 		cava
 		lutris
+		heroic
 		wineWowPackages.stable
 		winetricks
 		protonup-qt
@@ -165,6 +171,11 @@
 		jmtpfs
 		steam-run
 		xwayland-satellite
+		dmenu
+		i3status
+		i3lock
+		feh
+		xorg.xinit
 		fuse2
 		libreoffice-fresh
 		hunspell
@@ -186,6 +197,8 @@
 		basedpyright
 		nodejs
 		spotify
+		vulkan-tools
+		mesa-demos
 	];
 
 	services.udev.packages = with pkgs; [
@@ -206,6 +219,7 @@
 	services.udisks2.enable = true;
 	hardware.enableRedistributableFirmware = true;
 	hardware.graphics.enable32Bit = true;
+	hardware.graphics.enable = true;
 
 	nix.settings.experimental-features = ["nix-command" "flakes"];
 
