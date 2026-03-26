@@ -62,19 +62,19 @@
 	};	
 
 	services.greetd = {
-		enable = true;
+		enable = false;
 		settings = {
 			default_session = {
-				command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd 'dbus-run-session niri'";
+				command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember";
 				user = "greeter";
 			};
 		};
 	};
 
 	services.displayManager.sddm = {
-		enable = false;
+		enable = true;
 	};
-	# services.displayManager.defaultSession = "niri";
+	services.displayManager.defaultSession = "niri";
 
 	security.rtkit.enable = true;
 
@@ -92,7 +92,7 @@
 	programs.firefox.enable = true;
 	programs.fish.enable = true;
 	programs.silentSDDM = {
-		enable = false;
+		enable = true;
 		theme = "rei";
 	};
 
@@ -119,8 +119,9 @@
 		"image/tiff" = "org.kde.okular.desktop";
 	};
 
-	services.xserver.enable = true;
-	services.xserver.windowManager.i3.enable = true;
+	services.xserver.enable = false;
+	services.xserver.windowManager.qtile.enable = false;
+	services.xserver.displayManager.startx.enable = false;
 
 	environment.systemPackages = with pkgs; [
 		vim
@@ -165,17 +166,15 @@
 			matplotlib
 			scipy
 			astropy
+			pandas
+			pandas-stubs
+			# qtile
 		]))
 		usbutils
 		libmtp
 		jmtpfs
 		steam-run
-		xwayland-satellite
-		dmenu
-		i3status
-		i3lock
-		feh
-		xorg.xinit
+		# xwayland-satellite
 		fuse2
 		libreoffice-fresh
 		hunspell
@@ -194,6 +193,7 @@
 		pulseaudio
 		audacity
 		texlive.combined.scheme-full
+		typst
 		basedpyright
 		nodejs
 		spotify
@@ -204,15 +204,15 @@
 	services.udev.packages = with pkgs; [
 		libmtp
 	];
-	programs.xwayland.enable = true;
-	systemd.user.services.xwayland-satellite={
-		description = "Xwayland Satellite";
-		wantedBy = [ "graphical-session.target" ];
-		serviceConfig = {
-			ExecStart = "${pkgs.xwayland-satellite}/bin/xwayland-satellite";
-			Restart = "always";
-		};
-	};
+	# programs.xwayland.enable = true;
+	# systemd.user.services.xwayland-satellite={
+	# 	description = "Xwayland Satellite";
+	# 	wantedBy = [ "graphical-session.target" ];
+	# 	serviceConfig = {
+	# 		ExecStart = "${pkgs.xwayland-satellite}/bin/xwayland-satellite";
+	# 		Restart = "always";
+	# 	};
+	# };
 
 	services.dbus.enable = true;
 	services.dbus.packages = [ pkgs.kdePackages.kded ];
