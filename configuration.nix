@@ -104,8 +104,19 @@
 
 	nixpkgs.config.allowUnfree = true;
 
-	fonts.packages = with pkgs; [
-		nerd-fonts.jetbrains-mono
+	fonts.fontconfig.enable = true;
+
+	fonts.packages = [
+		(pkgs.stdenv.mkDerivation {
+			name = "custom-fonts";
+			src = ./fonts;
+
+			installPhase = ''
+				mkdir -p $out/share/fonts/truetype
+				cp -r $src/* $out/share/fonts/truetype/
+			'';
+		})
+		pkgs.nerd-fonts.jetbrains-mono
 	];
 
 	programs.gamemode.enable = true;
