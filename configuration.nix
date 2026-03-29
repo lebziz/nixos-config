@@ -156,6 +156,7 @@
 		protonup-qt
 		brightnessctl
 		unzip
+		zip
 		when
 		eza
 		lolcat
