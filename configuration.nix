@@ -180,18 +180,19 @@
 			astropy
 			pandas
 			pandas-stubs
+            scikit-learn
 			# qtile
 		]))
 		usbutils
 		libmtp
 		jmtpfs
 		steam-run
-		# xwayland-satellite
 		fuse2
 		libreoffice-fresh
 		hunspell
 		hunspellDicts.en_US
 		rtl-sdr
+        gnuplot_qt
 		cargo
 		gnumake
 		rustc
@@ -211,6 +212,8 @@
 		spotify
 		vulkan-tools
 		mesa-demos
+		xwayland-satellite
+		inotify-tools
 	];
 
 	services.udev.packages = with pkgs; [
