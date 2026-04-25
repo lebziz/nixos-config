@@ -214,6 +214,7 @@
 		mesa-demos
 		xwayland-satellite
 		inotify-tools
+        mpv
 	];
 
 	services.udev.packages = with pkgs; [
