@@ -9,6 +9,7 @@
 			inputs.silentSDDM.nixosModules.default
 
             ./modules/system/packages.nix
+            ./modules/system/desktop.nix
 		];
 
 	fileSystems."/mnt/driveD" = {
@@ -38,16 +39,6 @@
 
 	i18n.defaultLocale = "en_US.UTF-8";
 
-	services.libinput.enable = true;
-	xdg.portal = {
-		enable = true;
-		extraPortals = [
-			pkgs.kdePackages.xdg-desktop-portal-kde
-		];
-	};
-	services.gvfs.enable = true;
-	programs.dconf.enable = true;
-
 	users.users.meghith = {
 		isNormalUser = true;
 		description = "Meghith";
@@ -56,8 +47,6 @@
 	};
 	security.sudo.wheelNeedsPassword = true;
 
-	programs.niri.enable = true;
-	
 	programs.neovim = {
 		enable = true;
 		defaultEditor = true;
@@ -73,24 +62,6 @@
 		};
 	};
 
-	services.displayManager.sddm = {
-		enable = true;
-	};
-	services.displayManager.defaultSession = "niri";
-
-	security.rtkit.enable = true;
-
-	services.pipewire = {
-		enable = true;
-		alsa.enable = true;
-		alsa.support32Bit = true;
-		pulse.enable = true;
-		jack.enable = true;
-	};
-
-	hardware.bluetooth.enable = true;
-	hardware.bluetooth.powerOnBoot = true;
-
 	programs.firefox.enable = true;
 	programs.fish.enable = true;
 	programs.silentSDDM = {
@@ -98,43 +69,12 @@
 		theme = "rei";
 	};
 
-	environment.sessionVariables = {
-		TERMINAL = "kitty";
-		QT_QPA_PLATFORM = "wayland";
-		QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-	};
-
 	nixpkgs.config.allowUnfree = true;
-
-	fonts.fontconfig.enable = true;
-
-	fonts.packages = [
-		(pkgs.stdenv.mkDerivation {
-			name = "custom-fonts";
-			src = ./fonts;
-
-			installPhase = ''
-				mkdir -p $out/share/fonts/truetype
-				cp -r $src/* $out/share/fonts/truetype/
-			'';
-		})
-		pkgs.nerd-fonts.jetbrains-mono
-	];
 
 	programs.gamemode.enable = true;
 	programs.steam.enable = true;
 	programs.nix-ld.enable = true;
 	hardware.rtl-sdr.enable = true;
-	xdg.mime.defaultApplications = {
-		"image/png" = "nomacs.desktop";
-		"application/pdf" = "org.kde.okular.desktop";
-		"application/postscript" = "org.kde.okular.desktop";
-		"image/tiff" = "org.kde.okular.desktop";
-	};
-
-	services.xserver.enable = false;
-	services.xserver.windowManager.qtile.enable = false;
-	services.xserver.displayManager.startx.enable = false;
 
 	services.udev.packages = with pkgs; [
 		libmtp
