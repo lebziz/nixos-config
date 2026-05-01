@@ -1,0 +1,19 @@
+add ~/Music/tamil_vibey/mp3/
+add ~/Music/
+add ~/Music/Unshuffled/mp3/
+add ~/Music/Unshuffled/
+add ~/Music/unshuffled
+pl-create unshuffled
+add ~/Music/tamil_vibey/
+clear
+q
+set status_display_program=/home/meghith/.config/cmus/cmus_cover_art/target/release/observe
+set status_display_program=/home/meghith/.config/cmus/cmus-cover-art/target/release/observe
+add ~/Music/nier_automata_ost/
+pl-create nier_automata_ost
+set shuffle=true
+add ~/Music/tamil_melody/
+pl-create tamil_melodies
+pl-rename tamil_vibey
+pl-create tamil_vibey tamil_melodies
+quit

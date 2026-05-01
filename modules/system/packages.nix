@@ -31,7 +31,6 @@
 		vlc
 		telegram-desktop
 		signal-desktop
-		sdrpp
 		kdePackages.kdenlive
 		frei0r
 		inkscape
@@ -69,7 +68,6 @@
 		ffmpeg
 		unrar
 		xdg-utils
-		file
 		pulseaudio
 		audacity
 		texlive.combined.scheme-full
@@ -80,7 +78,5 @@
 		vulkan-tools
 		mesa-demos
 		xwayland-satellite
-		inotify-tools
-        mpv
 	];
 }

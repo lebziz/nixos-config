@@ -116,6 +116,10 @@
 	home-manager = {
 		useGlobalPkgs = true;
 		useUserPackages = true;
+        
+        extraSpecialArgs = {
+            inherit inputs;
+        };
 
 		users.meghith = import ./modules/home/home.nix;
 	};
