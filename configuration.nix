@@ -7,6 +7,8 @@
 			./disko.nix
 			inputs.disko.nixosModules.disko
 			inputs.silentSDDM.nixosModules.default
+
+            ./modules/system/packages.nix
 		];
 
 	fileSystems."/mnt/driveD" = {
@@ -134,89 +136,6 @@
 	services.xserver.windowManager.qtile.enable = false;
 	services.xserver.displayManager.startx.enable = false;
 
-	environment.systemPackages = with pkgs; [
-		vim
-		wget
-		curl
-		git
-		kitty
-		kdePackages.dolphin
-		kdePackages.qtsvg
-		kdePackages.kio-extras
-		kdePackages.kio-fuse
-		kdePackages.okular
-		kdePackages.kded
-		nomacs
-		cmus
-		cava
-		lutris
-		heroic
-		wineWowPackages.stable
-		winetricks
-		protonup-qt
-		brightnessctl
-		unzip
-		zip
-		when
-		eza
-		lolcat
-		pfetch
-		vlc
-		telegram-desktop
-		signal-desktop
-		sdrpp
-		kdePackages.kdenlive
-		frei0r
-		inkscape
-		gthumb
-		gimp
-		candy-icons
-		(python3.withPackages (ps: with ps; [
-			pip
-			virtualenv
-			numpy
-			matplotlib
-			scipy
-			astropy
-			pandas
-			pandas-stubs
-            scikit-learn
-			# qtile
-		]))
-		usbutils
-		libmtp
-		jmtpfs
-		steam-run
-		fuse2
-		libreoffice-fresh
-		hunspell
-		hunspellDicts.en_US
-		rtl-sdr
-        gnuplot_qt
-		cargo
-		gnumake
-		rustc
-		gcc
-		yazi
-		tmux
-		ffmpeg
-		unrar
-		xdg-utils
-		file
-		pulseaudio
-		audacity
-		texlive.combined.scheme-full
-		typst
-		basedpyright
-		nodejs
-		spotify
-		vulkan-tools
-		mesa-demos
-		xwayland-satellite
-		inotify-tools
-        mpv
-	];
-
 	services.udev.packages = with pkgs; [
 		libmtp
 	];
@@ -229,6 +148,19 @@
 	# 		Restart = "always";
 	# 	};
 	# };
+
+    # Ensure AccountsService is enabled (DMS needs this to read the avatar)
+    services.accounts-daemon.enable = true;
+
+    # Force NixOS to link your profile picture on every boot
+    system.activationScripts.profilePicture = {
+        text = ''
+              mkdir -p /var/lib/AccountsService/{icons,users}
+              cp /home/meghith/.face /var/lib/AccountsService/icons/meghith
+              echo -e "[User]\nIcon=/var/lib/AccountsService/icons/meghith\n" > /var/lib/AccountsService/users/meghith
+              chown root:root /var/lib/AccountsService/users/meghith
+        '';
+    };
 
 	services.dbus.enable = true;
 	services.dbus.packages = [ pkgs.kdePackages.kded ];

@@ -1,0 +1,86 @@
+{ pkgs, ... }:
+
+{
+	environment.systemPackages = with pkgs; [
+		vim
+		wget
+		curl
+		git
+		kitty
+		kdePackages.dolphin
+		kdePackages.qtsvg
+		kdePackages.kio-extras
+		kdePackages.kio-fuse
+		kdePackages.okular
+		kdePackages.kded
+		nomacs
+		cmus
+		cava
+		lutris
+		heroic
+		wineWowPackages.stable
+		winetricks
+		protonup-qt
+		brightnessctl
+		unzip
+		zip
+		when
+		eza
+		lolcat
+		pfetch-rs
+		vlc
+		telegram-desktop
+		signal-desktop
+		sdrpp
+		kdePackages.kdenlive
+		frei0r
+		inkscape
+		gthumb
+		gimp
+		candy-icons
+		(python3.withPackages (ps: with ps; [
+			pip
+			virtualenv
+			numpy
+			matplotlib
+			scipy
+			astropy
+			pandas
+			pandas-stubs
+            scikit-learn
+			# qtile
+		]))
+		usbutils
+		libmtp
+		jmtpfs
+		steam-run
+		fuse2
+		libreoffice-fresh
+		hunspell
+		hunspellDicts.en_US
+		rtl-sdr
+        gnuplot_qt
+		cargo
+		gnumake
+		rustc
+		gcc
+		yazi
+		tmux
+		ffmpeg
+		unrar
+		xdg-utils
+		file
+		pulseaudio
+		audacity
+		texlive.combined.scheme-full
+		typst
+		basedpyright
+		nodejs
+		spotify
+		vulkan-tools
+		mesa-demos
+		xwayland-satellite
+		inotify-tools
+        mpv
+	];
+}
