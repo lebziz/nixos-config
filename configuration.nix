@@ -66,7 +66,7 @@
 	programs.fish.enable = true;
 	programs.silentSDDM = {
 		enable = true;
-		theme = "rei";
+		theme = "ken";
 	};
 
 	nixpkgs.config.allowUnfree = true;
