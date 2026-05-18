@@ -78,5 +78,8 @@
 		vulkan-tools
 		mesa-demos
 		xwayland-satellite
+        m17n_db
+        upower
+        acpi
 	];
 }

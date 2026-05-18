@@ -71,4 +71,7 @@
     services.xserver.enable = false;
     services.xserver.windowManager.qtile.enable = false;
     services.xserver.displayManager.startx.enable = false;
+
+    # for battery power
+    services.upower.enable = true;
 }
