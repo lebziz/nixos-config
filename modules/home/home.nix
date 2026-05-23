@@ -26,4 +26,10 @@
     home.file.".config/cmus".source = ./config/cmus;
 
     home.stateVersion = "25.11";
+
+    home.packages = with pkgs; [
+        vscode-langservers-extracted
+        typescript-language-server
+        typescript
+    ];
 }
