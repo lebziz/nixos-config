@@ -17,7 +17,6 @@
 		cmus
 		cava
 		lutris
-		heroic
 		wineWowPackages.stable
 		winetricks
 		protonup-qt
