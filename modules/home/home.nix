@@ -16,9 +16,9 @@
 		defaultEditor = true;
 	};	
     
-    programs.fish.enable = true;
-
-    programs.kitty.enable = true;
+    # programs.fish.enable = true;
+    #
+    # programs.kitty.enable = true;
 
     # home.file.".config/kitty".source = ./config/kitty;
     # home.file.".config/fish".source = ./config/fish;

@@ -112,6 +112,8 @@
             inherit inputs;
         };
 
+        backupFileExtension = "backup";
+
 		users.meghith = import ./home/home.nix;
 	};
 
