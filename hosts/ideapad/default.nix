@@ -11,7 +11,7 @@
 			inputs.silentSDDM.nixosModules.default
         ];
 
-    networking.hostname = "ideapad";
+    networking.hostName = "ideapad";
 
 	fileSystems."/mnt/driveD" = {
 		device = "/dev/disk/by-uuid/5484003384001A5E";

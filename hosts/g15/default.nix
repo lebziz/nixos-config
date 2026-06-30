@@ -11,7 +11,7 @@
             inputs.silentSDDM.nixosModules.default 
         ];
 
-    networking.hostname = "g15";
+    networking.hostName = "g15";
 
     # other settings
 }
