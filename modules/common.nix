@@ -3,26 +3,9 @@
 {
 	imports =
 		[
-			./hardware-configuration.nix
-			./disko.nix
-			inputs.disko.nixosModules.disko
-			inputs.silentSDDM.nixosModules.default
-
-            ./modules/system/packages.nix
-            ./modules/system/desktop.nix
+            ./system/packages.nix
+            ./system/desktop.nix
 		];
-
-	fileSystems."/mnt/driveD" = {
-		device = "/dev/disk/by-uuid/5484003384001A5E";
-		fsType = "ntfs";
-		options = [ "rw" "uuid=1000" "gid=100" "nofail" ];
-	};
-
-	fileSystems."/mnt/driveE" = {
-		device = "/dev/disk/by-uuid/F234F94234F90A7D";
-		fsType = "ntfs";
-		options = [ "rw" "uuid=1000" "gid=100" "nofail" ];
-	};
 
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
@@ -31,7 +14,6 @@
 	boot.kernelPackages = pkgs.linuxPackages_latest;
 	boot.supportedFilesystems = [ "fuse" ];
 	boot.kernelModules = [ "fuse" ];
-	networking.hostName = "nixos";
 
 	networking.networkmanager.enable = true;
 
@@ -130,7 +112,7 @@
             inherit inputs;
         };
 
-		users.meghith = import ./modules/home/home.nix;
+		users.meghith = import ./home/home.nix;
 	};
 
 	system.stateVersion = "25.11";

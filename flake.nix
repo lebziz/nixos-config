@@ -34,15 +34,28 @@
 
 	outputs = { self, nixpkgs, disko, home-manager, ... }@inputs:
 	{
-		nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-			system = "x86_64-linux";
-			specialArgs = {
-				inherit inputs;
-			};
-			modules = [
-				./configuration.nix
-				home-manager.nixosModules.home-manager
-			];
-		};
+        nixosConfigurations = {
+            ideapad = nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+                specialArgs = {
+                    inherit inputs;
+                };
+                modules = [
+                    ./hosts/ideapad/default.nix
+                    home-manager.nixosModules.home-manager 
+                ];
+            };
+
+            g15 = nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+                specialArgs = {
+                    inherit inputs;
+                };
+                modules = [
+                    ./hosts/g15/default.nix
+                    home-manager.nixosModules.home-manager 
+                ];
+            };
+        };
 	};
 }
