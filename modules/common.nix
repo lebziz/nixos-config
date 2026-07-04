@@ -59,8 +59,17 @@
 		enable = true;
 		theme = "rei";
 	};
+    
+    qt = {
+        enable = true;
+        platformTheme = "qt5ct";
+        style = "breeze";
+    };
 
 	nixpkgs.config.allowUnfree = true;
+    nixpkgs.config.permittedInsecurePackages = [
+        "pnpm-10.29.2"
+      ];
 
 	programs.gamemode.enable = true;
 	programs.steam.enable = true;

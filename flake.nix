@@ -2,13 +2,13 @@
 	description = "NixOS configuration";
 
 	inputs = {
-		nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+		nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
 		disko.url = "github:nix-community/disko";
 		disko.inputs.nixpkgs.follows = "nixpkgs";
 
 		home-manager = {
-			url = "github:nix-community/home-manager/release-25.11";
+			url = "github:nix-community/home-manager/release-26.05";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
@@ -46,13 +46,13 @@
                 ];
             };
 
-            g15 = nixpkgs.lib.nixosSystem {
+            loq = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
                 specialArgs = {
                     inherit inputs;
                 };
                 modules = [
-                    ./hosts/g15/default.nix
+                    ./hosts/loq/default.nix
                     home-manager.nixosModules.home-manager 
                 ];
             };

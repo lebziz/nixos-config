@@ -13,11 +13,16 @@
 		kdePackages.kio-fuse
 		kdePackages.okular
 		kdePackages.kded
+        kdePackages.breeze
+        kdePackages.breeze-icons
+        kdePackages.kiconthemes
+        kdePackages.qqc2-desktop-style
 		nomacs
 		cmus
 		cava
 		lutris
-		wineWowPackages.stable
+        heroic
+		wineWow64Packages.stable
 		winetricks
 		protonup-qt
 		brightnessctl
@@ -29,7 +34,7 @@
 		pfetch-rs
 		vlc
 		telegram-desktop
-		signal-desktop
+        signal-desktop
 		kdePackages.kdenlive
 		frei0r
 		inkscape
@@ -80,5 +85,7 @@
         m17n_db
         upower
         acpi
+        qt6Packages.qt6ct
+        jdk21
 	];
 }

@@ -11,10 +11,28 @@
         dgop.package = inputs.dgop.packages.${pkgs.system}.default;
     };
 
-	programs.neovim = {
-		enable = true;
-		defaultEditor = true;
-	};	
+    gtk = {
+        enable = true;
+
+        theme = {
+            name = "Adwaita-dark";
+            package = pkgs.gnome-themes-extra;
+        };
+
+        iconTheme = {
+            name = "candy-icons";
+            package = pkgs.candy-icons;
+        };
+
+        gtk3.extraConfig = {
+            gtk-application-prefer-dark-theme = 1;
+        };
+    };
+
+	# programs.neovim = {
+	# 	enable = true;
+	# 	defaultEditor = true;
+	# };	
     
     # programs.fish.enable = true;
     #
