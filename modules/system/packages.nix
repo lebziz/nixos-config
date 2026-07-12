@@ -50,7 +50,7 @@
 			astropy
 			pandas
 			pandas-stubs
-            scikit-learn
+            		scikit-learn
 			# qtile
 		]))
 		usbutils
@@ -82,10 +82,13 @@
 		vulkan-tools
 		mesa-demos
 		xwayland-satellite
-        m17n_db
-        upower
-        acpi
-        qt6Packages.qt6ct
-        jdk21
+		m17n_db
+		upower
+		acpi
+		qt6Packages.qt6ct
+		jdk21
+	    nvtopPackages.full
+        mangohud
+        openrgb
 	];
 }

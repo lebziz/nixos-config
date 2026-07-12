@@ -41,7 +41,7 @@
 							content = {
 								type = "filesystem";
 								format = "ext4";
-								mountpoint = "/home/meghith";
+								mountpoint = "/home";
 							};
 						};
 					};
