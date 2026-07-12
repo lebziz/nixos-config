@@ -89,6 +89,5 @@
 		jdk21
 	    nvtopPackages.full
         mangohud
-        openrgb
 	];
 }
