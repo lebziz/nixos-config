@@ -62,6 +62,7 @@
 		hunspell
 		hunspellDicts.en_US
 		rtl-sdr
+        sdrpp
         gnuplot_qt
 		cargo
 		gnumake

@@ -35,4 +35,8 @@
 
         dynamicBoost.enable = true;
     };
+
+    services.udev.extraRules = ''
+        SUBSYSTEM=="usb", ATTR{idVendor}=="048d", ATTR{idProduct}=="c993", MODE="0666"
+    '';
 }
