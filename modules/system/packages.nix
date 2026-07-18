@@ -90,5 +90,6 @@
 		jdk21
 	    nvtopPackages.full
         mangohud
+        ghostscript
 	];
 }
