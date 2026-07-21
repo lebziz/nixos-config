@@ -91,5 +91,6 @@
 	    nvtopPackages.full
         mangohud
         ghostscript
+        evtest
 	];
 }
