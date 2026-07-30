@@ -108,6 +108,7 @@
 	hardware.enableRedistributableFirmware = true;
 	hardware.graphics.enable32Bit = true;
 	hardware.graphics.enable = true;
+    services.tailscale.enable = true;
 
 	nix.settings.experimental-features = ["nix-command" "flakes"];
 

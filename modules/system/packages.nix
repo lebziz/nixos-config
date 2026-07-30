@@ -26,6 +26,7 @@
 		winetricks
 		protonup-qt
 		brightnessctl
+        playerctl
 		unzip
 		zip
 		when
