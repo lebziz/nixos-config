@@ -107,7 +107,14 @@
 	services.udisks2.enable = true;
 	hardware.enableRedistributableFirmware = true;
 	hardware.graphics.enable32Bit = true;
-	hardware.graphics.enable = true;
+
+    hardware.graphics = {
+        enable = true;
+        extraPackages = with pkgs; [
+            intel-media-driver
+        ];
+    };
+
     services.tailscale.enable = true;
 
 	nix.settings.experimental-features = ["nix-command" "flakes"];

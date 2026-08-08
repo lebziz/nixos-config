@@ -93,5 +93,8 @@
         mangohud
         ghostscript
         evtest
+        libva-utils
+        mpv
+        htop
 	];
 }
