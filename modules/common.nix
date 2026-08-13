@@ -13,7 +13,7 @@
 
 	boot.kernelPackages = pkgs.linuxPackages_latest;
 	boot.supportedFilesystems = [ "fuse" ];
-	boot.kernelModules = [ "fuse" ];
+	boot.kernelModules = [ "fuse" "tun" ];
 
 	networking.networkmanager.enable = true;
 
@@ -105,6 +105,7 @@
 	services.dbus.enable = true;
 	services.dbus.packages = [ pkgs.kdePackages.kded ];
 	services.udisks2.enable = true;
+
 	hardware.enableRedistributableFirmware = true;
 	hardware.graphics.enable32Bit = true;
 
@@ -116,10 +117,12 @@
     };
 
     services.tailscale.enable = true;
+    services.openssh.enable = true;
 
 	nix.settings.experimental-features = ["nix-command" "flakes"];
 
 	networking.firewall.enable = true;
+    networking.firewall.checkReversePath = "loose";
 
 	home-manager = {
 		useGlobalPkgs = true;
