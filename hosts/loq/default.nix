@@ -47,4 +47,10 @@
     services.udev.extraRules = ''
         SUBSYSTEM=="usb", ATTR{idVendor}=="048d", ATTR{idProduct}=="c993", MODE="0666"
     '';
+
+    nix.settings = {
+        http-connections = 128;
+        max-substitution-jobs = 128;
+        max-jobs = "auto";
+    };
 }

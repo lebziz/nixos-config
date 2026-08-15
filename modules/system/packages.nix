@@ -51,7 +51,7 @@
 			astropy
 			pandas
 			pandas-stubs
-            		scikit-learn
+            scikit-learn
 			# qtile
 		]))
 		usbutils
