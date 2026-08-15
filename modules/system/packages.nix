@@ -96,5 +96,6 @@
         libva-utils
         mpv
         htop
+        intel-gpu-tools
 	];
 }
