@@ -29,10 +29,15 @@
         };
     };
 
-	# programs.neovim = {
-	# 	enable = true;
-	# 	defaultEditor = true;
-	# };	
+	programs.neovim = {
+		enable = true;
+		defaultEditor = true;
+        extraPackages = with pkgs; [
+            tree-sitter
+            gcc
+        ];
+	extraLuaConfig = builtins.readFile ./configs/nvim/init.lua;
+	};	
     
     # programs.fish.enable = true;
     #

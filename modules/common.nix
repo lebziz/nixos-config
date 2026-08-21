@@ -38,10 +38,14 @@
 	};
 	security.sudo.wheelNeedsPassword = true;
 
-	programs.neovim = {
-		enable = true;
-		defaultEditor = true;
-	};	
+	# programs.neovim = {
+	# 	enable = true;
+	# 	defaultEditor = true;
+	#        extraPackages = with pkgs; [
+	#            tree-sitter
+	#            gcc
+	#        ];
+	# };	
 
 	services.greetd = {
 		enable = false;
@@ -121,9 +125,9 @@
 
 	nix.settings.experimental-features = ["nix-command" "flakes"];
 
-    # to keep the build-time dependencies intact and not delete them by garbage collector
-    nix.settings.keep-outputs = true;
-    nix.settings.keep-derivations = true;
+    # # to keep the build-time dependencies intact and not delete them by garbage collector
+    # nix.settings.keep-outputs = true;
+    # nix.settings.keep-derivations = true;
 
 	networking.firewall.enable = true;
     networking.firewall.checkReversePath = "loose";
@@ -135,6 +139,8 @@
         extraSpecialArgs = {
             inherit inputs;
         };
+
+        backupFileExtension = "backup";
 
 		users.meghith = import ./home/home.nix;
 	};
