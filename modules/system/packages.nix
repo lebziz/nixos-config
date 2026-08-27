@@ -8,6 +8,8 @@
 		git
 		kitty
 		kdePackages.dolphin
+        kdePackages.kservice
+        kdePackages.kde-cli-tools
 		kdePackages.qtsvg
 		kdePackages.kio-extras
 		kdePackages.kio-fuse
@@ -97,5 +99,6 @@
         mpv
         htop
         intel-gpu-tools
+        dust
 	];
 }
