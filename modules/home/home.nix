@@ -3,6 +3,7 @@
 {
     imports = [
         inputs.dms.homeModules.dank-material-shell
+        ./configs/kitty.nix
     ];
 
     programs.dank-material-shell = {
@@ -39,19 +40,23 @@
         };
     };
 
-	programs.neovim = {
-		enable = true;
-		defaultEditor = true;
-        extraPackages = with pkgs; [
-            tree-sitter
-            gcc
-        ];
-	extraLuaConfig = builtins.readFile ./configs/nvim/init.lua;
-	};	
+    home.sessionVariables = {
+        EDITOR = "nvim";
+    };
+
+    programs.kitty.enable = true;
+
+	# programs.neovim = {
+	# 	enable = true;
+	# 	defaultEditor = true;
+	#        extraPackages = with pkgs; [
+	#            tree-sitter
+	#            gcc
+	#        ];
+	# extraLuaConfig = builtins.readFile ./configs/nvim/init.lua;
+	# };	
     
     # programs.fish.enable = true;
-    #
-    # programs.kitty.enable = true;
 
     # home.file.".config/kitty".source = ./config/kitty;
     # home.file.".config/fish".source = ./config/fish;
@@ -64,5 +69,8 @@
         vscode-langservers-extracted
         typescript-language-server
         typescript
+
+        inputs.my-nixvim.packages.${pkgs.system}.default
+        inputs.my-nixvim.packages.${pkgs.system}.okular_nvr
     ];
 }

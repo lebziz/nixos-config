@@ -26,13 +26,23 @@
 			url = "github:AvengeMedia/dgop";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
 		silentSDDM = {
 			url = "github:uiriansan/SilentSDDM";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+        zen-browser = {
+            url = "github:youwen5/zen-browser-flake";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
+        my-nixvim = {
+            url = "github:lebziz/neovim-nix-config";
+        };
 	};
 
-	outputs = { self, nixpkgs, disko, home-manager, ... }@inputs:
+	outputs = { self, nixpkgs, disko, home-manager, zen-browser, ... }@inputs:
 	{
         nixosConfigurations = {
             ideapad = nixpkgs.lib.nixosSystem {

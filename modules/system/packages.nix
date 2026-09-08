@@ -6,7 +6,7 @@
 		wget
 		curl
 		git
-		kitty
+		# kitty
 		kdePackages.dolphin
         kdePackages.kservice
         kdePackages.kde-cli-tools
@@ -100,5 +100,6 @@
         htop
         intel-gpu-tools
         dust
+        komikku
 	];
 }
