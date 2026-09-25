@@ -101,5 +101,6 @@
         intel-gpu-tools
         dust
         komikku
+        cmake
 	];
 }

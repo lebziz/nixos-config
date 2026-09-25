@@ -125,8 +125,12 @@
     };
 
     services.tailscale.enable = true;
-    services.openssh.enable = true;
-
+    services.openssh = {
+        enable = true;
+        settings = {
+            UseDns = false;
+        };
+    }; 
 	nix.settings.experimental-features = ["nix-command" "flakes"];
 
     # # to keep the build-time dependencies intact and not delete them by garbage collector
