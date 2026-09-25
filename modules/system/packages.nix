@@ -78,7 +78,7 @@
 		xdg-utils
 		pulseaudio
 		audacity
-		texlive.combined.scheme-full
+		texliveFull
 		typst
 		basedpyright
 		nodejs
