@@ -62,4 +62,6 @@
         max-substitution-jobs = 128;
         max-jobs = "auto";
     };
+
+    programs.gpu-screen-recorder.enable = true;
 }
