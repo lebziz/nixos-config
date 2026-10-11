@@ -50,6 +50,7 @@
             '';
         })
         pkgs.nerd-fonts.jetbrains-mono
+        pkgs.lmmath
     ];
 
     # Session variables (Wayland/Qt tweaks)
