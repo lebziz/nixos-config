@@ -39,6 +39,7 @@
 		telegram-desktop
         signal-desktop
 		kdePackages.kdenlive
+        # davinci-resolve
 		frei0r
 		inkscape
 		gthumb
@@ -54,6 +55,7 @@
 			pandas
 			pandas-stubs
             scikit-learn
+            mpmath
 			# qtile
 		]))
 		usbutils

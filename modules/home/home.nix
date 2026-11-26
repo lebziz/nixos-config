@@ -4,6 +4,7 @@
     imports = [
         inputs.dms.homeModules.dank-material-shell
         ./configs/kitty.nix
+        # inputs.my-fish.homeManagerModules.default
     ];
 
     programs.dank-material-shell = {

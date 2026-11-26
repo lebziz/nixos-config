@@ -9,6 +9,9 @@
             background_opacity = "0.6"; 
             dynamic_background_opacity = true; 
             allow_remote_control = true;
+            # cursor_shape = "block";
+            # cursor_beam_thickness = "1.5";
+            # shell_integration = "no-cursor";
         };
     };
 }

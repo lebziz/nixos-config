@@ -40,6 +40,10 @@
         my-nixvim = {
             url = "github:lebziz/neovim-nix-config";
         };
+
+        # my-fish = {
+        #     url = "path:/home/meghith/nix-projects/fish-config-nix";
+        # };
 	};
 
 	outputs = { self, nixpkgs, disko, home-manager, zen-browser, ... }@inputs:
